@@ -1,6 +1,6 @@
 ﻿/*=============================================================================
   Copyright (c) 2017 S.H.(GAMELINKS)
-  https://github.com/S-H-GAMELINKS/Novel.Game.Engine.LINKS
+  https://github.com/S-H-GAMELINKS/Tear.of.Lapislazuli
   This software is released under the MIT License, see LICENSE.
 =============================================================================*/
 #define WIN32_LEAN_AND_MEAN
@@ -1589,7 +1589,7 @@ namespace {
 
 	//文字列の描画
 	void SCRIPT_OUTPUT_STRING_DRAW() {
-		//TODO: https://github.com/S-H-GAMELINKS/Novel.Game.Engine.LINKS/issues/3
+		//TODO: https://github.com/S-H-GAMELINKS/Tear.of.Lapislazuli/issues/3
 		assert(std::size_t(CP + 1) <= String[SP].size());
 		// １文字分抜き出す
 		OneMojiBuf[0] = String[SP][CP];
