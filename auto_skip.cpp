@@ -61,6 +61,13 @@ void SKIP_READ_CHECK() noexcept {
 	//既読データ読み込み時の判定
 	if (IDYES == SKIP_READ_MESSAGE() && 0 < EndFlag && EndFlag <= countof(conv->arr) && 1 == conv->arr[EndFlag - 1]) {
 		skip_auto = Skiptype::skip;
+
+		GAMEMENU_COUNT = true;
+
+		//サウンドノベル風描画時の処理
+		SOUNDNOVEL();
+		//ウインドウ風描画時の処理
+		WINDOWNOVEL();
 	}
 	//ショートカットキー時の事後処理
 	SHORTCUT_KEY_DRAW();
