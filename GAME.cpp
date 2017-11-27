@@ -107,6 +107,7 @@ struct alignas(4) QuickSaveData_t {
 	std::int32_t BG;			//背景画像情報
 	std::int32_t BGM;		//BGM情報
 	std::int32_t SAVE_CHOICE;//選択肢画面でのセーブ情報
+	std::int32_t LapisLazuliPoint; //瑠璃の好感度
 };
 
 //コンティニューセーブデータ
@@ -118,6 +119,7 @@ struct alignas(4) ContinueSaveData_t {
 	std::int32_t BG;			//背景画像情報
 	std::int32_t BGM;		//BGM情報
 	std::int32_t SAVE_CHOICE;//選択肢画面でのセーブ情報
+	std::int32_t LapisLazuliPoint; //瑠璃の好感度
 };
 
 //
