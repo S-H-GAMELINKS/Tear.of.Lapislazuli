@@ -160,6 +160,28 @@ void TITLE_MENU() {
 	}
 }
 
+//選択肢描画ループ
+static void GameLoopTypeChoice() {
+
+	const char * Choice[][3] = {
+		{"読書", "ペーパークラフト", "御茶" },
+		{"ボードゲーム", "映画", "掃除"}
+	};
+
+	int num = 0;
+
+	//ループ
+	while (ProcessMessage() == 0) {
+
+		for(int i = 0; i < 3; i++)
+			DrawString(50, 100 + (i*50), Choice[num][i], 255);
+
+
+		if (CheckHitKey(KEY_INPUT_ESCAPE))
+			break;
+	}
+}
+
 static void GameLoopType1(const int RouteNumber, int32_t& TextIgnoredFlag){
 	if (TextIgnoredFlag == 0) disableSkip();
 	SCRIPT_READ();
@@ -243,6 +265,9 @@ int WINAPI WinMain(HINSTANCE /*hInstance*/, HINSTANCE /*hPrevInstance*/, LPSTR /
 	DXLib_POST_PREP();
 
 	while (ProcessMessage() == 0 && EndFlag != 99999) {
+
+		//テスト用
+		GameLoopTypeChoice();
 
 		//タイトルメニュー
 		TITLE_MENU();
