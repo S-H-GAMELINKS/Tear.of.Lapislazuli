@@ -169,13 +169,23 @@ static void GameLoopTypeChoice() {
 	};
 
 	int num = 0;
+	int Lapislazuli = LoadGraph("DATA/CHARACTER/CHAR01.png", 0);
+	int bg = LoadGraph("DATA/BACKGROUND/BG01.png");
+	int windowcolor = GetColor(0, 0, 0);
 
 	//ループ
 	while (ProcessMessage() == 0) {
 
+		DxLib::DrawGraph(0, 0, bg, true);
+		DxLib::DrawBox(0, 0, 250, 480, windowcolor, TRUE);
+
+		//選択肢の表示
 		for(int i = 0; i < 3; i++)
 			DrawString(50, 100 + (i*50), Choice[num][i], 255);
 
+		// 読みこんだグラフィックを画面左上に描画
+		DxLib::DrawGraph(250, 0, Lapislazuli ,true);
+		DxLib::DrawBox(0, 350, 640, 480, windowcolor, TRUE);
 
 		if (CheckHitKey(KEY_INPUT_ESCAPE))
 			break;
