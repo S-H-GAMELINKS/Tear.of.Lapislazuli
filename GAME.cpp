@@ -42,6 +42,7 @@ static_assert(
 static int GAMEOVER;
 
 //選択肢読込変数
+int ChoicePosY = choise_pos_y[0];
 static std::string ChoiceStrings[2];
 static constexpr const char* const ChoiceFiles[][2] = {
 	{ "DATA/STR/CHOICE/A.txt", "DATA/STR/CHOICE/B.txt" },
@@ -355,9 +356,9 @@ namespace {
 	void Mouse_Move_Choice(int MouseY) {
 		//選択肢画面
 		if (EndFlag == 1) {
-			TitleMenuPosY = (MouseY <= 149) ? 100
-				: (MouseY <= 199) ? 150
-				: 200;
+			ChoicePosY = (MouseY <= 149) ? choise_pos_y[0]
+				: (MouseY <= 199) ? choise_pos_y[1]
+				: choise_pos_y[2];
 		}
 	}
 }
@@ -1241,6 +1242,11 @@ int Kaigyou()
 	return 0;
 }
 
+void ChoiceSelect(int num) {
+
+
+}
+
 //選択肢描画ループ
 static void GameLoopTypeChoice() {
 
@@ -1255,8 +1261,10 @@ static void GameLoopTypeChoice() {
 	int windowcolor = GetColor(0, 0, 0);
 	unsigned int color = GetColor(0, 0, 255);
 
+	unsigned short TempEndFlag = EndFlag;
+
 	//ループ
-	while (ProcessMessage() == 0 && EndFlag != 99 && EndFlag != 99999) {
+	while (ProcessMessage() == 0 && TempEndFlag == EndFlag && EndFlag != 99 && EndFlag != 99999) {
 
 		//マウス操作
 		Mouse_Move();
@@ -1278,8 +1286,23 @@ static void GameLoopTypeChoice() {
 		DxLib::DrawGraph(250, 0, Lapislazuli, true);
 		DxLib::DrawBox(0, 350, 640, 480, windowcolor, TRUE);
 
-		sentakusi(color, TitleMenuPosY);
+		sentakusi(color, ChoicePosY);
 
+		if ((GetMouseInput() & MOUSE_INPUT_LEFT) == 1) {
+			switch (ChoicePosY) {
+				case choise_pos_y[0]:
+					EndFlag = (num == 0) ? 2 : 5;
+					break;
+
+				case choise_pos_y[1]:
+					EndFlag = (num == 0) ? 3 : 6;
+					break;
+
+				case choise_pos_y[2]:
+					EndFlag = (num == 0) ? 4 : 7;
+					break;
+			}
+		}
 	}
 }
 
