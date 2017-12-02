@@ -1273,7 +1273,7 @@ static void GameLoopTypeChoice() {
 
 		//選択肢の表示
 		for (int i = 0; i < 3; i++)
-			DrawString(50, 100 + (i * 50), Choice[num][i], 255);
+			DrawString(50, 100 + (i * 50), Choice[num][i], color);
 
 		// 読みこんだグラフィックを画面左上に描画
 		DxLib::DrawGraph(250, 0, Lapislazuli, true);
