@@ -354,8 +354,8 @@ namespace {
 	//マウス操作(選択肢画面)
 	void Mouse_Move_Choice(int MouseY) {
 		//選択肢画面
-		if (EndFlag == 99) {
-			GAME_y = (MouseY <= 99) ? 100
+		if (EndFlag == 1) {
+			TitleMenuPosY = (MouseY <= 99) ? 100
 				: (MouseY <= 149) ? 150
 				: (MouseY <= 199) ? 200
 				: 200;
@@ -1254,6 +1254,7 @@ static void GameLoopTypeChoice() {
 	int Lapislazuli = LoadGraph("DATA/CHARACTER/CHAR01.png", 0);
 	int bg = LoadGraph("DATA/BACKGROUND/BG01.png");
 	int windowcolor = GetColor(0, 0, 0);
+	unsigned int color = GetColor(255, 255, 255);
 
 	//ループ
 	while (ProcessMessage() == 0) {
@@ -1266,6 +1267,8 @@ static void GameLoopTypeChoice() {
 
 		//ゲーム終了
 		GAME_FINISH();
+
+		sentakusi(color, TitleMenuPosY);
 
 		DxLib::DrawGraph(0, 0, bg, true);
 		DxLib::DrawBox(0, 0, 250, 480, windowcolor, TRUE);
