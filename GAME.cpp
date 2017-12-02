@@ -1257,7 +1257,7 @@ static void GameLoopTypeChoice() {
 	unsigned int color = GetColor(0, 0, 255);
 
 	//ループ
-	while (ProcessMessage() == 0) {
+	while (ProcessMessage() == 0 && EndFlag != 99 && EndFlag != 99999) {
 
 		//マウス操作
 		Mouse_Move();
