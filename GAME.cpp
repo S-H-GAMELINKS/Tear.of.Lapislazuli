@@ -334,14 +334,6 @@ namespace {
 		}
 	}
 
-	//マウス操作(選択肢画面)
-	void Mouse_Move_CHOICE(int MouseY) {
-		//選択肢画面
-		if (EndFlag == 1 || EndFlag == 2 || EndFlag == 3 || EndFlag == 4 || EndFlag == 5 || EndFlag == 6 || EndFlag == 7) {
-			TitleMenuPosY = (MouseY <= 229) ? 200 : 230;
-		}
-	}
-
 	//マウス操作(コンフィグ)
 	void Mouse_Move_CONFIG(int MouseY) {
 
@@ -392,7 +384,7 @@ int Mouse_Move() {
 		Mouse_Move_SAVE(MouseY);
 
 		//選択肢画面
-		Mouse_Move_CHOICE(MouseY);
+		Mouse_Move_Choice(MouseY);
 
 		//コンフィグ画面
 		Mouse_Move_CONFIG(MouseY);
@@ -1266,6 +1258,15 @@ static void GameLoopTypeChoice() {
 	//ループ
 	while (ProcessMessage() == 0) {
 
+		//マウス操作
+		Mouse_Move();
+
+		//ゲームメニュー
+		GAMEMENU();
+
+		//ゲーム終了
+		GAME_FINISH();
+
 		DxLib::DrawGraph(0, 0, bg, true);
 		DxLib::DrawBox(0, 0, 250, 480, windowcolor, TRUE);
 
@@ -1277,8 +1278,6 @@ static void GameLoopTypeChoice() {
 		DxLib::DrawGraph(250, 0, Lapislazuli, true);
 		DxLib::DrawBox(0, 350, 640, 480, windowcolor, TRUE);
 
-		if (CheckHitKey(KEY_INPUT_ESCAPE))
-			break;
 	}
 }
 
@@ -1519,11 +1518,6 @@ namespace {
 			//選択肢の描画
 			sentakusi(Cr, TitleMenuPosY);
 
-			//ゲームメニュー
-			GAMEMENU();
-
-			//ゲーム終了
-			GAME_FINISH();
 
 			//セーブデータ用スクリーンショット取得
 			SCRIPT_OUTPUT_CHOICE_LOOP_SAVESNAP();
