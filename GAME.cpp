@@ -1565,6 +1565,9 @@ namespace {
 
 	//スクリプトタグ処理(選択肢処理)
 	void SCRIPT_OUTPUT_CHOICE() {
+
+		ClearDrawScreen();
+
 		//選択肢画面描画ループ
 		GameLoopTypeChoice();
 	}
