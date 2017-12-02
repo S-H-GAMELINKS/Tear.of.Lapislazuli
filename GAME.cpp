@@ -355,9 +355,8 @@ namespace {
 	void Mouse_Move_Choice(int MouseY) {
 		//選択肢画面
 		if (EndFlag == 1) {
-			TitleMenuPosY = (MouseY <= 99) ? 100
-				: (MouseY <= 149) ? 150
-				: (MouseY <= 199) ? 200
+			TitleMenuPosY = (MouseY <= 149) ? 100
+				: (MouseY <= 199) ? 150
 				: 200;
 		}
 	}
