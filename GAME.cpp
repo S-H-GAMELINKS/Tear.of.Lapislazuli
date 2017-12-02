@@ -1254,7 +1254,7 @@ static void GameLoopTypeChoice() {
 	int Lapislazuli = LoadGraph("DATA/CHARACTER/CHAR01.png", 0);
 	int bg = LoadGraph("DATA/BACKGROUND/BG01.png");
 	int windowcolor = GetColor(0, 0, 0);
-	unsigned int color = GetColor(255, 255, 255);
+	unsigned int color = GetColor(0, 0, 255);
 
 	//ループ
 	while (ProcessMessage() == 0) {
@@ -1268,8 +1268,6 @@ static void GameLoopTypeChoice() {
 		//ゲーム終了
 		GAME_FINISH();
 
-		sentakusi(color, TitleMenuPosY);
-
 		DxLib::DrawGraph(0, 0, bg, true);
 		DxLib::DrawBox(0, 0, 250, 480, windowcolor, TRUE);
 
@@ -1280,6 +1278,8 @@ static void GameLoopTypeChoice() {
 		// 読みこんだグラフィックを画面左上に描画
 		DxLib::DrawGraph(250, 0, Lapislazuli, true);
 		DxLib::DrawBox(0, 350, 640, 480, windowcolor, TRUE);
+
+		sentakusi(color, TitleMenuPosY);
 
 	}
 }

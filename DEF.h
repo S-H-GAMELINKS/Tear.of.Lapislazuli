@@ -23,7 +23,7 @@ constexpr int menu_init_pos_y = 330;
 constexpr int menu_pos_x = 400;
 
 //選択肢
-constexpr int choise_pos_x = 100;
+constexpr int choise_pos_x = 20;
 constexpr int choise_pos_y[] = { 200, 230 };
 constexpr int choise_init_pos_y = choise_pos_y[0];
 
