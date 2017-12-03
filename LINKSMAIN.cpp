@@ -221,9 +221,9 @@ void GAME_LOOP() {
 		//main, A-F
 		GameLoopType1(EndFlag, conv->arr[EndFlag - 1]);
 	}
-	else /*if(8 <= EndFlag && EndFlag <= 15)*/ {
+	else if(8 <= EndFlag && EndFlag <= 10) {
 		//G-N
-		//GameLoopType2(EndFlag, conv->arr[EndFlag - 1]);
+		GameLoopType2(EndFlag, conv->arr[EndFlag - 1]);
 	}
 }
 
@@ -250,7 +250,7 @@ int WINAPI WinMain(HINSTANCE /*hInstance*/, HINSTANCE /*hPrevInstance*/, LPSTR /
 		//各種ゲームループ
 		GAME_LOOP();
 
-		if (EndFlag == 10)
+		if (EndFlag == 11)
 			GameLoopTypeChoice();
 	}
 
