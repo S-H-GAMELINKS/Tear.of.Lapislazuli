@@ -54,6 +54,7 @@ static constexpr const char* const ChoiceFiles[][2] = {
 	{ "DATA/STR/CHOICE/M.txt", "DATA/STR/CHOICE/N.txt" }
 };
 
+//瑠璃の好感度
 static int LapislazuliFav = 0;
 
 //エンドフラグ
