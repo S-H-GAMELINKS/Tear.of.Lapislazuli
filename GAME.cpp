@@ -1265,7 +1265,7 @@ void ChoiceSelect(int num) {
 }
 
 //選択肢描画関連
-void ChoiceDraw(int bg, unsigned int windowcolor, int color, int Lapislazuli) {
+void ChoiceDraw(int bg, unsigned int windowcolor, int Lapislazuli) {
 	DxLib::DrawGraph(0, 0, bg, true);
 	DxLib::DrawBox(0, 0, 250, 480, windowcolor, TRUE);
 
@@ -1303,7 +1303,7 @@ static void GameLoopTypeChoice() {
 		GAME_FINISH();
 
 		//描画関連
-		ChoiceDraw(bg, windowcolor, color, Lapislazuli);
+		ChoiceDraw(bg, windowcolor, Lapislazuli);
 
 		//選択肢の表示
 		for (int i = 0; i < 3; i++)
