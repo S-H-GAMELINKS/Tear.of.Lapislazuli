@@ -1306,6 +1306,8 @@ void GameLoopTypeChoice() {
 
 	int TempEndFlag = EndFlag;
 
+	SP = CP = 0;
+
 	//瑠璃の好感度による分岐処理
 	LapislazuliFavBranchTask();
 
