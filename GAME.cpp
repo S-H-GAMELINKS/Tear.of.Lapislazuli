@@ -60,6 +60,9 @@ static int LapislazuliFav = 0;
 //エンドフラグ
 int EndFlag = 99;
 
+//イベントフラグ
+static int EventFlag = 0;
+
 //ゲームメニュー変数
 bool GAMEMENU_COUNT;
 
@@ -1280,7 +1283,8 @@ void ChoiceDraw(int bg, unsigned int windowcolor, int Lapislazuli) {
 }
 
 void LapislazuliFavBranchTask() {
-	if (LapislazuliFav >= 3)
+
+	if (3 <= LapislazuliFav && LapislazuliFav <= 4 && EventFlag == 0)
 		EndFlag = 8;
 
 	if (6 <= LapislazuliFav && LapislazuliFav <= 7)
@@ -1310,6 +1314,9 @@ void GameLoopTypeChoice() {
 
 	//瑠璃の好感度による分岐処理
 	LapislazuliFavBranchTask();
+
+	if (EndFlag == 8)
+		EventFlag = 1;
 
 	WaitTimer(300);
 
@@ -1932,7 +1939,14 @@ int SCRIPT_OUTPUT() {
 		//選択肢の表示
 	case 'D':
 
-		EndFlag = 11;
+		if (1 <= EndFlag && EndFlag <= 4)
+			EndFlag = 11;
+
+		if (EndFlag == 8)
+			EndFlag = 11;
+
+		if (5 <= EndFlag && EndFlag <= 7)
+			EndFlag = 11;
 
 		//選択肢描画処理
 		//SCRIPT_OUTPUT_CHOICE();
