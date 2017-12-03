@@ -1267,58 +1267,26 @@ void ChoiceSelect(int num) {
 
 		switch (ChoicePosY) {
 			case choise_pos_y[0]:
+
 				EndFlag = (num == 0) ? 2 : 5;
 				LapislazuliFav += (num == 0) ? 2 : 1;
 				(num == 0) ? ChoiceFlagData.ReadBook = 1 : ChoiceFlagData.BoardGame = 1;
 				break;
 
 			case choise_pos_y[1]:
+
 				EndFlag = (num == 0) ? 3 : 6;
 				LapislazuliFav += (num == 0) ? 1 : 2;
 				(num == 0) ? ChoiceFlagData.PaperCraft = 1 : ChoiceFlagData.Cinema = 1;
 				break;
 
 			case choise_pos_y[2]:
+
 				EndFlag = (num == 0) ? 4 : 7;
 				LapislazuliFav += (num == 0) ? 1 : 1;
 				(num == 0) ? ChoiceFlagData.Tea = 1 : ChoiceFlagData.CleanRoom = 1;
 				break;
 		}
-	}
-}
-
-void ChoiceSelectCheck(int num) {
-
-	switch (ChoicePosY) {
-		case choise_pos_y[0]:
-			
-			if (num == 0 && ChoiceFlagData.ReadBook == 1)
-				DrawString(0, 0, "既に実行済み", 255);
-
-			if (num == 1 && ChoiceFlagData.BoardGame == 1)
-				DrawString(0, 0, "既に実行済み", 255);
-
-			break;
-
-		case choise_pos_y[1]:
-
-			if (num == 0 && ChoiceFlagData.PaperCraft == 1)
-				DrawString(0, 0, "既に実行済み", 255);
-
-			if (num == 1 && ChoiceFlagData.Cinema == 1)
-				DrawString(0, 0, "既に実行済み", 255);
-
-			break;
-
-		case choise_pos_y[2]:
-
-			if (num == 0 && ChoiceFlagData.Tea == 1)
-				DrawString(0, 0, "既に実行済み", 255);
-
-			if (num == 1 && ChoiceFlagData.CleanRoom == 1)
-				DrawString(0, 0, "既に実行済み", 255);
-
-			break;
 	}
 }
 
