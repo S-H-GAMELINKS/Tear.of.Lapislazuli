@@ -54,6 +54,7 @@ static constexpr const char* const ChoiceFiles[][2] = {
 	{ "DATA/STR/CHOICE/M.txt", "DATA/STR/CHOICE/N.txt" }
 };
 
+static int LapislazuliFav = 0;
 
 //エンドフラグ
 int EndFlag = 99;
@@ -1251,14 +1252,17 @@ void ChoiceSelect(int num) {
 		switch (ChoicePosY) {
 			case choise_pos_y[0]:
 				EndFlag = (num == 0) ? 2 : 5;
+				LapislazuliFav += (num == 0) ? 2 : 1;
 				break;
 
 			case choise_pos_y[1]:
 				EndFlag = (num == 0) ? 3 : 6;
+				LapislazuliFav += (num == 0) ? 1 : 2;
 				break;
 
 			case choise_pos_y[2]:
 				EndFlag = (num == 0) ? 4 : 7;
+				LapislazuliFav += (num == 0) ? 1 : 1;
 				break;
 		}
 	}
@@ -1282,7 +1286,7 @@ static void GameLoopTypeChoice() {
 		{ "ボードゲーム", "映画", "掃除" }
 	};
 
-	int num = 0;
+	int num = (LapislazuliFav >= 3) ? 1 : 0;
 	int Lapislazuli = LoadGraph("DATA/CHARACTER/CHAR01.png", 0);
 	int bg = LoadGraph("DATA/BACKGROUND/BG01.png");
 	int windowcolor = GetColor(0, 0, 0);
