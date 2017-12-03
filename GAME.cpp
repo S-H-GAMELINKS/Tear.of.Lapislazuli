@@ -1294,6 +1294,9 @@ void GameLoopTypeChoice() {
 
 	int TempEndFlag = EndFlag;
 
+	if (LapislazuliFav >= 3)
+		EndFlag = 8;
+
 	WaitTimer(300);
 
 	//ループ
@@ -1915,7 +1918,7 @@ int SCRIPT_OUTPUT() {
 		//選択肢の表示
 	case 'D':
 
-		EndFlag = 10;
+		EndFlag = 11;
 
 		//選択肢描画処理
 		//SCRIPT_OUTPUT_CHOICE();
