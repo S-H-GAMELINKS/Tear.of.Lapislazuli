@@ -1264,6 +1264,16 @@ void ChoiceSelect(int num) {
 	}
 }
 
+//選択肢描画関連
+void ChoiceDraw(int bg, unsigned int windowcolor, int color, int Lapislazuli) {
+	DxLib::DrawGraph(0, 0, bg, true);
+	DxLib::DrawBox(0, 0, 250, 480, windowcolor, TRUE);
+
+	// 読みこんだグラフィックを画面左上に描画
+	DxLib::DrawGraph(250, 0, Lapislazuli, true);
+	DxLib::DrawBox(0, 350, 640, 480, windowcolor, TRUE);
+}
+
 //選択肢描画ループ
 static void GameLoopTypeChoice() {
 
@@ -1292,16 +1302,12 @@ static void GameLoopTypeChoice() {
 		//ゲーム終了
 		GAME_FINISH();
 
-		DxLib::DrawGraph(0, 0, bg, true);
-		DxLib::DrawBox(0, 0, 250, 480, windowcolor, TRUE);
+		//描画関連
+		ChoiceDraw(bg, windowcolor, color, Lapislazuli);
 
 		//選択肢の表示
 		for (int i = 0; i < 3; i++)
 			DrawString(50, 100 + (i * 50), Choice[num][i], color);
-
-		// 読みこんだグラフィックを画面左上に描画
-		DxLib::DrawGraph(250, 0, Lapislazuli, true);
-		DxLib::DrawBox(0, 350, 640, 480, windowcolor, TRUE);
 
 		sentakusi(color, ChoicePosY);
 
