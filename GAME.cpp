@@ -356,7 +356,7 @@ namespace {
 	//マウス操作(選択肢画面)
 	void Mouse_Move_Choice(int MouseY) {
 		//選択肢画面
-		if (1 <= EndFlag && EndFlag <= 7) {
+		if (EndFlag == 10) {
 			ChoicePosY = (MouseY <= 149) ? choise_pos_y[0]
 				: (MouseY <= 199) ? choise_pos_y[1]
 				: choise_pos_y[2];
@@ -1279,7 +1279,7 @@ void ChoiceDraw(int bg, unsigned int windowcolor, int Lapislazuli) {
 }
 
 //選択肢描画ループ
-static void GameLoopTypeChoice() {
+void GameLoopTypeChoice() {
 
 	const char * Choice[][3] = {
 		{ "読書", "ペーパークラフト", "御茶" },
@@ -1913,8 +1913,10 @@ int SCRIPT_OUTPUT() {
 		//選択肢の表示
 	case 'D':
 
+		EndFlag = 10;
+
 		//選択肢描画処理
-		SCRIPT_OUTPUT_CHOICE();
+		//SCRIPT_OUTPUT_CHOICE();
 		break;
 
 		// 終了文字

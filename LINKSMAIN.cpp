@@ -249,6 +249,9 @@ int WINAPI WinMain(HINSTANCE /*hInstance*/, HINSTANCE /*hPrevInstance*/, LPSTR /
 
 		//各種ゲームループ
 		GAME_LOOP();
+
+		if (EndFlag == 10)
+			GameLoopTypeChoice();
 	}
 
 	//設定の保存

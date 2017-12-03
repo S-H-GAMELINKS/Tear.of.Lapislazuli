@@ -123,6 +123,9 @@ int GAMEMENU();
 //選択肢機能
 void sentakusi(int Cr, int y);
 
+///選択肢描画ループ
+void GameLoopTypeChoice();
+
 // 改行関数
 int Kaigyou();
 
@@ -157,4 +160,5 @@ void WINDOWNOVEL() noexcept;
 void SHORTCUT_KEY_DRAW() noexcept;
 
 void WORD_FORMAT();
+
 #endif //LINKS_GAME_H_
