@@ -1294,6 +1294,8 @@ void GameLoopTypeChoice() {
 
 	int TempEndFlag = EndFlag;
 
+	WaitTimer(300);
+
 	//ループ
 	while (ProcessMessage() == 0 && TempEndFlag == EndFlag && EndFlag != 99 && EndFlag != 99999) {
 
