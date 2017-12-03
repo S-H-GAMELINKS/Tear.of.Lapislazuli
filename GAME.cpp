@@ -1258,21 +1258,18 @@ void ChoiceSelect(int num) {
 
 				EndFlag = (num == 0) ? 2 : 5;
 				LapislazuliFav += (num == 0) ? 2 : 1;
-				(num == 0) ? ChoiceFlagData.ReadBook = 1 : ChoiceFlagData.BoardGame = 1;
 				break;
 
 			case choise_pos_y[1]:
 
 				EndFlag = (num == 0) ? 3 : 6;
 				LapislazuliFav += (num == 0) ? 1 : 2;
-				(num == 0) ? ChoiceFlagData.PaperCraft = 1 : ChoiceFlagData.Cinema = 1;
 				break;
 
 			case choise_pos_y[2]:
 
 				EndFlag = (num == 0) ? 4 : 7;
 				LapislazuliFav += (num == 0) ? 1 : 1;
-				(num == 0) ? ChoiceFlagData.Tea = 1 : ChoiceFlagData.CleanRoom = 1;
 				break;
 		}
 	}
@@ -1350,8 +1347,6 @@ void GameLoopTypeChoice() {
 
 		//選択後の分岐処理
 		ChoiceSelect(num);
-
-		ChoiceSelectCheck(num);
 	}
 }
 
