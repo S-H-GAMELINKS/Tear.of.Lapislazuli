@@ -1242,9 +1242,26 @@ int Kaigyou()
 	return 0;
 }
 
+//選択後の分岐処理関数
 void ChoiceSelect(int num) {
 
+	//マウスの左クリック判定
+	if ((GetMouseInput() & MOUSE_INPUT_LEFT) == 1) {
 
+		switch (ChoicePosY) {
+			case choise_pos_y[0]:
+				EndFlag = (num == 0) ? 2 : 5;
+				break;
+
+			case choise_pos_y[1]:
+				EndFlag = (num == 0) ? 3 : 6;
+				break;
+
+			case choise_pos_y[2]:
+				EndFlag = (num == 0) ? 4 : 7;
+				break;
+		}
+	}
 }
 
 //選択肢描画ループ
@@ -1288,21 +1305,7 @@ static void GameLoopTypeChoice() {
 
 		sentakusi(color, ChoicePosY);
 
-		if ((GetMouseInput() & MOUSE_INPUT_LEFT) == 1) {
-			switch (ChoicePosY) {
-				case choise_pos_y[0]:
-					EndFlag = (num == 0) ? 2 : 5;
-					break;
-
-				case choise_pos_y[1]:
-					EndFlag = (num == 0) ? 3 : 6;
-					break;
-
-				case choise_pos_y[2]:
-					EndFlag = (num == 0) ? 4 : 7;
-					break;
-			}
-		}
+		ChoiceSelect(num);
 	}
 }
 
