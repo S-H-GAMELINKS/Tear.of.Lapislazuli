@@ -1309,8 +1309,10 @@ static void GameLoopTypeChoice() {
 		for (int i = 0; i < 3; i++)
 			DrawString(50, 100 + (i * 50), Choice[num][i], color);
 
+		//選択肢カーソル
 		sentakusi(color, ChoicePosY);
 
+		//選択後の分岐処理
 		ChoiceSelect(num);
 	}
 }
