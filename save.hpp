@@ -31,6 +31,12 @@ struct alignas(4) SaveData_t {
 	std::int32_t BGM;		//BGM情報
 	std::int32_t SAVE_CHOICE;//選択肢画面でのセーブ情報
 	std::int32_t LapisLazuliPoint; //瑠璃の好感度
+	unsigned int ReadBook;
+	unsigned int PaperCraft;
+	unsigned int Tea;
+	unsigned int BoardGame;
+	unsigned int Cinema;
+	unsigned int CleanRoom;
 };
 
 #endif
