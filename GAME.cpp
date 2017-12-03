@@ -1278,6 +1278,17 @@ void ChoiceDraw(int bg, unsigned int windowcolor, int Lapislazuli) {
 	DxLib::DrawBox(0, 350, 640, 480, windowcolor, TRUE);
 }
 
+void LapislazuliFavBranchTask() {
+	if (LapislazuliFav >= 3)
+		EndFlag = 8;
+
+	if (6 <= LapislazuliFav && LapislazuliFav <= 7)
+		EndFlag = 9;
+
+	if (LapislazuliFav == 8)
+		EndFlag = 10;
+}
+
 //選択肢描画ループ
 void GameLoopTypeChoice() {
 
@@ -1294,8 +1305,8 @@ void GameLoopTypeChoice() {
 
 	int TempEndFlag = EndFlag;
 
-	if (LapislazuliFav >= 3)
-		EndFlag = 8;
+	//瑠璃の好感度による分岐処理
+	LapislazuliFavBranchTask()
 
 	WaitTimer(300);
 
