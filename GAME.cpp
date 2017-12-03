@@ -63,18 +63,6 @@ int EndFlag = 99;
 //イベントフラグ
 static int EventFlag = 0;
 
-//各選択肢管理用
-struct ChoiceFlag {
-	unsigned int ReadBook;
-	unsigned int PaperCraft;
-	unsigned int Tea;
-	unsigned int BoardGame;
-	unsigned int Cinema;
-	unsigned int CleanRoom;
-};
-
-ChoiceFlag ChoiceFlagData = { 0, 0, 0, 0, 0, 0 };
-
 //ゲームメニュー変数
 bool GAMEMENU_COUNT;
 
