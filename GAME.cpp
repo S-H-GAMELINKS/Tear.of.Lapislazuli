@@ -357,7 +357,7 @@ namespace {
 	//マウス操作(選択肢画面)
 	void Mouse_Move_Choice(int MouseY) {
 		//選択肢画面
-		if (EndFlag == 10) {
+		if (EndFlag == 11) {
 			ChoicePosY = (MouseY <= 149) ? choise_pos_y[0]
 				: (MouseY <= 199) ? choise_pos_y[1]
 				: choise_pos_y[2];
