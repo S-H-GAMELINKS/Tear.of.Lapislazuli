@@ -1288,7 +1288,7 @@ static void GameLoopTypeChoice() {
 	int windowcolor = GetColor(0, 0, 0);
 	unsigned int color = GetColor(0, 0, 255);
 
-	unsigned short TempEndFlag = EndFlag;
+	int TempEndFlag = EndFlag;
 
 	//ループ
 	while (ProcessMessage() == 0 && TempEndFlag == EndFlag && EndFlag != 99 && EndFlag != 99999) {
