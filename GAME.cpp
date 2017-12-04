@@ -55,7 +55,7 @@ static constexpr const char* const ChoiceFiles[][2] = {
 };
 
 //瑠璃の好感度
-static int LapislazuliFav = 0;
+int LapislazuliFav = 0;
 
 //エンドフラグ
 int EndFlag = 99;

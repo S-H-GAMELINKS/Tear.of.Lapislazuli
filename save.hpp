@@ -30,7 +30,7 @@ struct alignas(4) SaveData_t {
 	std::int32_t BG;			//背景画像情報
 	std::int32_t BGM;		//BGM情報
 	std::int32_t SAVE_CHOICE;//選択肢画面でのセーブ情報
-	std::int32_t LapisLazuliPoint; //瑠璃の好感度
+	std::int32_t LapisLazuliFav; //瑠璃の好感度
 };
 
 #endif

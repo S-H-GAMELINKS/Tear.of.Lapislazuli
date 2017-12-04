@@ -67,6 +67,9 @@ extern int SP, CP;
 extern int TITLE;
 extern unsigned int Cr;
 
+//瑠璃の好感度
+extern int LapislazuliFav;
+
 //エンドフラグ
 extern int EndFlag;
 
