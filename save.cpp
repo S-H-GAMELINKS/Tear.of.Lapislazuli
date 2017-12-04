@@ -96,7 +96,7 @@ namespace {
 			}
 
 			//セーブデータの作成
-			SaveData_t Data = { EndFlag, SP, 0, charactor.activeResource(), background.activeResource(), backgroundMusic.activeResource(), SAVE_CHOICE, LapislazuliFav };
+			SaveData_t Data = { EndFlag, SP, 0, charactor.activeResource(), background.activeResource(), backgroundMusic.activeResource(), SAVE_CHOICE, LapislazuliFav, EventFlag };
 			FILE *fp;
 #ifdef LINKS_HAS_FOPEN_S
 			const errno_t er = fopen_s(&fp, SaveDataPath, "wb");
@@ -298,6 +298,7 @@ namespace {
 			backgroundMusic.activeResource(Data.BGM);
 			SAVE_CHOICE = Data.SAVE_CHOICE;
 			LapislazuliFav = Data.LapisLazuliFav;
+			EventFlag = Data.EventFlag;
 
 			//ロード後のメッセージ
 			LOAD_MESSAGE();

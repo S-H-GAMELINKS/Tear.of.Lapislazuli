@@ -73,6 +73,9 @@ extern int LapislazuliFav;
 //エンドフラグ
 extern int EndFlag;
 
+//イベントフラグ
+extern int EventFlag;
+
 //ゲームメニュー変数
 extern bool GAMEMENU_COUNT;
 

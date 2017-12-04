@@ -61,7 +61,7 @@ int LapislazuliFav = 0;
 int EndFlag = 99;
 
 //イベントフラグ
-static int EventFlag = 0;
+int EventFlag = 0;
 
 //ゲームメニュー変数
 bool GAMEMENU_COUNT;
