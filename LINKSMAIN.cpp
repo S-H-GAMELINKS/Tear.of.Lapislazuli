@@ -168,8 +168,6 @@ static void GameLoopType1(const int RouteNumber, int32_t& TextIgnoredFlag){
 	{
 		//タグ処理
 		SCRIPT_OUTPUT();
-		//ゲームメニュー
-		GAMEMENU();
 		//スクリーンショット取得
 		SCREENSHOT();
 		//ショートカットキー
@@ -196,8 +194,6 @@ static void GameLoopType2(const int RouteNumber, const int32_t TextIgnoredFlag){
 	{
 		//タグ処理
 		SCRIPT_OUTPUT();
-		//ゲームメニュー
-		GAMEMENU();
 		//スクリーンショット取得
 		SCREENSHOT();
 		//ショートカットキー

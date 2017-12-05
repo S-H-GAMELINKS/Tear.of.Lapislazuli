@@ -123,9 +123,6 @@ int QUICKSAVE_LOAD();
 //コンティニュー用ロード
 int CONTINUE_LOAD();
 
-//セーブ・ロード・スキップ・オート他 ゲームメニュー
-int GAMEMENU();
-
 //選択肢機能
 void sentakusi(int Cr, int y);
 
