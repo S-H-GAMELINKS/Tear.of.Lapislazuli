@@ -114,6 +114,7 @@ struct alignas(4) QuickSaveData_t {
 	std::int32_t BGM;		//BGM情報
 	std::int32_t SAVE_CHOICE;//選択肢画面でのセーブ情報
 	std::int32_t LapisLazuliPoint; //瑠璃の好感度
+	std::int32_t EventFlag;
 };
 
 //コンティニューセーブデータ
@@ -126,6 +127,7 @@ struct alignas(4) ContinueSaveData_t {
 	std::int32_t BGM;		//BGM情報
 	std::int32_t SAVE_CHOICE;//選択肢画面でのセーブ情報
 	std::int32_t LapisLazuliPoint; //瑠璃の好感度
+	std::int32_t EventFlag;
 };
 
 //
@@ -485,7 +487,7 @@ namespace {
 		if (IDYES == MessageBoxYesNo("クイックセーブを実行しますか？")) {
 
 			//クイックセーブデータの作成
-			QuickSaveData_t Data = { EndFlag, SP, 0, charactor.activeResource(), background.activeResource(), backgroundMusic.activeResource(), SAVE_CHOICE };
+			QuickSaveData_t Data = { EndFlag, SP, 0, charactor.activeResource(), background.activeResource(), backgroundMusic.activeResource(), SAVE_CHOICE, LapislazuliFav, EventFlag };
 			FILE *fp;
 #ifdef LINKS_HAS_FOPEN_S
 			const errno_t er = fopen_s(&fp, "DATA/SAVE/QUICKSAVEDATA.dat", "wb");
@@ -535,6 +537,8 @@ int QUICKSAVE_LOAD() {
 		background.activeResource(Data.BG);
 		backgroundMusic.activeResource(Data.BGM);
 		SAVE_CHOICE = Data.SAVE_CHOICE;
+		LapislazuliFav = Data.LapisLazuliPoint;
+		EventFlag = Data.EventFlag;
 
 		GAMEMENU_COUNT = true;
 
@@ -554,7 +558,7 @@ namespace {
 	int CONTINUE_SAVE() {
 
 		//クイックセーブデータの作成
-		ContinueSaveData_t Data = { EndFlag, SP, 0, charactor.activeResource(), background.activeResource(), backgroundMusic.activeResource(), SAVE_CHOICE };
+		ContinueSaveData_t Data = { EndFlag, SP, 0, charactor.activeResource(), background.activeResource(), backgroundMusic.activeResource(), SAVE_CHOICE, LapislazuliFav, EventFlag };
 		FILE *fp;
 #ifdef LINKS_HAS_FOPEN_S
 		const errno_t er = fopen_s(&fp, "DATA/SAVE/CONTINUESAVEDATA.dat", "wb");
@@ -601,6 +605,8 @@ int CONTINUE_LOAD() {
 		background.activeResource(Data.BG);
 		backgroundMusic.activeResource(Data.BGM);
 		SAVE_CHOICE = Data.SAVE_CHOICE;
+		LapislazuliFav = Data.LapisLazuliPoint;
+		EventFlag = Data.EventFlag;
 
 		GAMEMENU_COUNT = true;
 
