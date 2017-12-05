@@ -1292,12 +1292,16 @@ void ChoiceDraw(int bg, unsigned int windowcolor, int Lapislazuli) {
 }
 
 void LapislazuliFavBranchTask() {
+
+	//中間イベントへの分岐判定
 	if (3 <= LapislazuliFav && LapislazuliFav <= 4 && EventFlag == 0)
 		EndFlag = 8;
 
+	//BADエンドへの分岐判定
 	if (6 <= LapislazuliFav && LapislazuliFav <= 7)
 		EndFlag = 9;
 
+	//GOODエンドへの分岐判定
 	if (LapislazuliFav == 8)
 		EndFlag = 10;
 }
