@@ -622,34 +622,6 @@ int CONTINUE_LOAD() {
 }
 
 namespace {
-	//ゲームメニュー項目描画関数
-	void GAMEMENU_DRAW() {
-		static constexpr const char* menuStrings[] = {
-			"セーブ", "ロード", "セーブデータ削除", "既読スキップ", "スキップ", "オート",
-			"オート/スキップ停止", "バックログ参照", "設定", "タイトルに戻る", "ゲームに戻る", "ゲーム終了"
-		};
-		//各メニュー描画
-		for (std::size_t i = 0; i < countof(menuStrings); ++i) {
-			DrawString(save_name_pos_x, game_menu_base_pos_y * (i + 1), menuStrings[i], Cr);
-		}
-	}
-
-	//ゲームメニュー(キー操作)
-	void GAMEMENU_KEY_MOVE() {
-
-		if (Key[KEY_INPUT_DOWN] == 1) {
-			GAME_y += game_menu_base_pos_y;
-			if (GAME_y == (game_menu_base_pos_y * 13))
-				GAME_y = game_menu_base_pos_y;
-		}
-
-		if (Key[KEY_INPUT_UP] == 1) {
-			GAME_y -= game_menu_base_pos_y;
-			if (GAME_y == (game_menu_base_pos_y - game_menu_base_pos_y))
-				GAME_y = (game_menu_base_pos_y * 12);
-		}
-	}
-
 	//コンフィグ(キー操作)
 	void CONFIG_KEY_MOVE() {
 
@@ -1047,151 +1019,6 @@ void CONFIG() {
 	}
 }
 
-namespace {
-	//各ゲームメニュー選択時処理
-	static void GAMEMENU_CHOICE() {
-
-		//セーブ
-		if (GAME_y == game_menu_base_pos_y && CheckHitKey(KEY_INPUT_RETURN) == 1 || GAME_y == game_menu_base_pos_y && ((GetMouseInput() & MOUSE_INPUT_LEFT) != 0)) {
-
-			//セーブデータセーブ処理
-			SAVEDATA_SAVE();
-			WaitTimer(300);
-		}
-
-		//ロード
-		if (GAME_y == (game_menu_base_pos_y * 2) && CheckHitKey(KEY_INPUT_RETURN) == 1 || GAME_y == (game_menu_base_pos_y * 2) && ((GetMouseInput() & MOUSE_INPUT_LEFT) != 0)) {
-
-			//セーブデータロード処理
-			SAVEDATA_LOAD();
-			WaitTimer(300);
-		}
-
-		//セーブデータ削除
-		if (GAME_y == (game_menu_base_pos_y * 3) && CheckHitKey(KEY_INPUT_RETURN) == 1 || GAME_y == (game_menu_base_pos_y * 3) && ((GetMouseInput() & MOUSE_INPUT_LEFT) != 0)) {
-
-			//セーブデータ削除処理
-			SAVEDATA_DELETE();
-			WaitTimer(300);
-		}
-
-		//既読スキップ
-		if (GAME_y == (game_menu_base_pos_y * 4) && CheckHitKey(KEY_INPUT_RETURN) == 1 || GAME_y == (game_menu_base_pos_y * 4) && ((GetMouseInput() & MOUSE_INPUT_LEFT) != 0)) {
-
-			//既読データの読み込み
-			SKIP_READ_LOAD();
-
-			//既読済みの部分を判定して、スキップ
-			SKIP_READ_CHECK();
-			WaitTimer(300);
-		}
-
-		//スキップ
-		if (GAME_y == (game_menu_base_pos_y * 5) && CheckHitKey(KEY_INPUT_RETURN) == 1 || GAME_y == (game_menu_base_pos_y * 5) && ((GetMouseInput() & MOUSE_INPUT_LEFT) != 0)) {
-
-			//スキップ処理
-			SKIP_START();
-			WaitTimer(300);
-		}
-
-		//オート
-		if (GAME_y == (game_menu_base_pos_y * 6) && CheckHitKey(KEY_INPUT_RETURN) == 1 || GAME_y == (game_menu_base_pos_y * 6) && ((GetMouseInput() & MOUSE_INPUT_LEFT) != 0)) {
-
-			//オート処理
-			AUTO_START();
-			WaitTimer(300);
-		}
-
-		//オート/スキップ停止
-		if (GAME_y == (game_menu_base_pos_y * 7) && CheckHitKey(KEY_INPUT_RETURN) == 1 || GAME_y == (game_menu_base_pos_y * 7) && ((GetMouseInput() & MOUSE_INPUT_LEFT) != 0)) {
-
-			//オート/スキップ停止処理
-			AUTO_SKIP_STOP();
-			WaitTimer(300);
-		}
-
-		//バックログ参照
-		if (GAME_y == (game_menu_base_pos_y * 8) && CheckHitKey(KEY_INPUT_RETURN) == 1 || GAME_y == (game_menu_base_pos_y * 8) && ((GetMouseInput() & MOUSE_INPUT_LEFT) != 0)) {
-
-			//バックログ参照
-			BACKLOG_DRAW();
-			WaitTimer(300);
-		}
-
-		//設定
-		if (GAME_y == (game_menu_base_pos_y * 9) && CheckHitKey(KEY_INPUT_RETURN) == 1 || GAME_y == (game_menu_base_pos_y * 9) && ((GetMouseInput() & MOUSE_INPUT_LEFT) != 0)) {
-
-			//設定画面の呼び出し
-			CONFIG();
-			WaitTimer(300);
-		}
-
-		//タイトルに戻る
-		if (GAME_y == (game_menu_base_pos_y * 10) && CheckHitKey(KEY_INPUT_RETURN) == 1 || GAME_y == (game_menu_base_pos_y * 10) && ((GetMouseInput() & MOUSE_INPUT_LEFT) != 0)) {
-
-			//タイトルに戻る
-			GAMEMENU_TITLE_BACK();
-			WaitTimer(300);
-		}
-
-		//ゲームに戻る
-		if (GAME_y == (game_menu_base_pos_y * 11) && CheckHitKey(KEY_INPUT_RETURN) == 1 || GAME_y == (game_menu_base_pos_y * 11) && ((GetMouseInput() & MOUSE_INPUT_LEFT) != 0)) {
-
-			//ゲームに戻る
-			GAMEMENU_GAME_BACK();
-			WaitTimer(300);
-		}
-
-		//ゲーム終了
-		if (GAME_y == (game_menu_base_pos_y * 12) && CheckHitKey(KEY_INPUT_RETURN) == 1 || GAME_y == (game_menu_base_pos_y * 12) && ((GetMouseInput() & MOUSE_INPUT_LEFT) != 0)) {
-
-			//ゲーム終了
-			GAMEMENU_GAME_FINISH();
-			WaitTimer(300);
-		}
-
-		//エスケープでゲーム終了
-		GAME_FINISH();
-	}
-}
-
-//ゲームメニュー
-int GAMEMENU() {
-
-	//ゲームメニューを開く
-	if (CheckHitKey(KEY_INPUT_BACK) == 1 || (GetMouseInput() & MOUSE_INPUT_RIGHT) != 0) {
-
-		GAMEMENU_COUNT = false;
-		ClearDrawScreen();
-		backgroundMusic.stop();
-		GAME_y = game_menu_base_pos_y;
-
-		//ゲームメニューループ
-		while (ProcessMessage() == 0 && MoveKey(Key) == 0 && false == GAMEMENU_COUNT) {
-
-			//ゲームメニューの描画
-			GAMEMENU_DRAW();
-
-			//カーソル描画
-			GAME_MENU_CURSOR(Cr, GAME_y);
-
-			//マウス操作
-			Mouse_Move();
-
-			//ゲームメニュー(キー操作)
-			GAMEMENU_KEY_MOVE();
-
-			//画面クリア処理
-			SCREEN_CLEAR();
-
-			//各ゲームメニュー選択時処理
-			GAMEMENU_CHOICE();
-		}
-	}
-
-	return 0;
-}
-
 //選択肢機能
 void sentakusi(unsigned int color, int y) {
 
@@ -1346,9 +1173,6 @@ void GameLoopTypeChoice() {
 
 		//マウス操作
 		Mouse_Move();
-
-		//ゲームメニュー
-		GAMEMENU();
 
 		//ゲーム終了
 		GAME_FINISH();
