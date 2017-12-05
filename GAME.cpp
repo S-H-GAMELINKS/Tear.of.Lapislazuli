@@ -1254,18 +1254,22 @@ void ChoiceSelect(int num) {
 	if ((GetMouseInput() & MOUSE_INPUT_LEFT) == 1) {
 
 		switch (ChoicePosY) {
+
+			//一番上の選択肢を選んだ際の処理
 			case choise_pos_y[0]:
 
 				EndFlag = (num == 0) ? 2 : 5;
 				LapislazuliFav += (num == 0) ? 2 : 1;
 				break;
 
+			//真ん中の選択肢を選んだ際の処理
 			case choise_pos_y[1]:
 
 				EndFlag = (num == 0) ? 3 : 6;
 				LapislazuliFav += (num == 0) ? 1 : 2;
 				break;
 
+			//一番下の選択肢を選んだ際の処理
 			case choise_pos_y[2]:
 
 				EndFlag = (num == 0) ? 4 : 7;
