@@ -1365,6 +1365,9 @@ void GameLoopTypeChoice() {
 
 		//選択後の分岐処理
 		ChoiceSelect(num);
+
+		//ショートカットキー処理
+		SHORTCUT_KEY();
 	}
 }
 
