@@ -1281,16 +1281,17 @@ void ChoiceSelect(int num) {
 
 //選択肢描画関連
 void ChoiceDraw(int bg, unsigned int windowcolor, int Lapislazuli) {
+
+	//背景と選択肢部分の黒塗り
 	DxLib::DrawGraph(0, 0, bg, true);
 	DxLib::DrawBox(0, 0, 250, 480, windowcolor, TRUE);
 
-	// 読みこんだグラフィックを画面左上に描画
+	// 読みこんだグラフィックを画面左上に描画し、その下を黒塗り
 	DxLib::DrawGraph(250, 0, Lapislazuli, true);
 	DxLib::DrawBox(0, 350, 640, 480, windowcolor, TRUE);
 }
 
 void LapislazuliFavBranchTask() {
-
 	if (3 <= LapislazuliFav && LapislazuliFav <= 4 && EventFlag == 0)
 		EndFlag = 8;
 
