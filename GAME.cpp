@@ -1086,6 +1086,9 @@ void ChoiceSelect(int num) {
 	//マウスの左クリック判定
 	if ((GetMouseInput() & MOUSE_INPUT_LEFT) == 1) {
 
+		//バックログ取得関数
+		BACKLOG_GET();
+
 		switch (ChoicePosY) {
 
 			//一番上の選択肢を選んだ際の処理
