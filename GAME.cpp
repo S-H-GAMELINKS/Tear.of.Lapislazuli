@@ -585,14 +585,14 @@ namespace {
 		//キー操作関連
 		if (Key[KEY_INPUT_DOWN] == 1) {
 			GAME_y += game_menu_base_pos_y;
-			if (GAME_y == (game_menu_base_pos_y * 10))
+			if (GAME_y == (game_menu_base_pos_y * 8))
 				GAME_y = game_menu_base_pos_y;
 		}
 
 		if (Key[KEY_INPUT_UP] == 1) {
 			GAME_y -= game_menu_base_pos_y;
 			if (GAME_y == (game_menu_base_pos_y - game_menu_base_pos_y))
-				GAME_y = (game_menu_base_pos_y * 9);
+				GAME_y = (game_menu_base_pos_y * 7);
 		}
 	}
 
@@ -757,7 +757,7 @@ namespace {
 	void MOUSE_KEY_MOVE() {
 
 		//マウス操作を有効に
-		if (GAME_y == game_menu_base_pos_y * 8 && CheckHitKey(KEY_INPUT_RIGHT) == 1 || GAME_y == game_menu_base_pos_y * 8 && ((GetMouseInput() & MOUSE_INPUT_LEFT) != 0)) {
+		if (GAME_y == game_menu_base_pos_y * 6 && CheckHitKey(KEY_INPUT_RIGHT) == 1 || GAME_y == game_menu_base_pos_y * 6 && ((GetMouseInput() & MOUSE_INPUT_LEFT) != 0)) {
 
 			WaitTimer(300);
 
@@ -765,7 +765,7 @@ namespace {
 		}
 
 		//キー操作を有効に
-		if (GAME_y == game_menu_base_pos_y * 8 && CheckHitKey(KEY_INPUT_LEFT) == 1 || GAME_y == game_menu_base_pos_y * 8 && ((GetMouseInput() & MOUSE_INPUT_RIGHT) != 0)) {
+		if (GAME_y == game_menu_base_pos_y * 6 && CheckHitKey(KEY_INPUT_LEFT) == 1 || GAME_y == game_menu_base_pos_y * 6 && ((GetMouseInput() & MOUSE_INPUT_RIGHT) != 0)) {
 
 			WaitTimer(300);
 
