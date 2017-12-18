@@ -316,9 +316,7 @@ namespace {
 				: (MouseY <= 149) ? 120
 				: (MouseY <= 179) ? 150
 				: (MouseY <= 209) ? 180
-				: (MouseY <= 239) ? 210
-				: (MouseY <= 269) ? 240
-				: 270;
+				: 210;
 		}
 	}
 
@@ -840,8 +838,7 @@ namespace {
 	//各種設定情報描画
 	void CONFIG_MENU() {
 		static constexpr const char* saveDataName[] = {
-			"ＢＧＭ音量", "ＳＥ音量", "オート速度", "スキップ速度", "文字描画速度", "描画方法", "非アクティブ時", "マウス/キー操作",
-			"戻る"
+			"ＢＧＭ音量", "ＳＥ音量", "オート速度", "スキップ速度", "文字描画速度", "マウス/キー操作", "戻る"
 		};
 		for (std::size_t i = 0; i < countof(saveDataName); ++i) {
 			DrawString(save_name_pos_x, game_menu_base_pos_y * (i + 1), saveDataName[i], Cr);
@@ -851,16 +848,14 @@ namespace {
 		DrawFormatString(save_name_pos_x + cursor_move_unit * 5, game_menu_base_pos_y * 3, Cr, "%d", ConfigData.auto_speed);
 		DrawFormatString(save_name_pos_x + cursor_move_unit * 5, game_menu_base_pos_y * 4, Cr, "%d", ConfigData.skip_speed);
 		DrawFormatString(save_name_pos_x + cursor_move_unit * 5, game_menu_base_pos_y * 5, Cr, "%d", ConfigData.string_speed);
-		DrawString(save_name_pos_x + cursor_move_unit * 6, game_menu_base_pos_y * 6, ((1 == ConfigData.soundnovel_winownovel) ? "ウインドウ風" : "サウンドノベル風"), Cr);
-		DrawString(save_name_pos_x + cursor_move_unit * 7, game_menu_base_pos_y * 7, ((WindowActive) ? "処理" : "未処理"), Cr);
-		DrawString(save_name_pos_x + cursor_move_unit * 8, game_menu_base_pos_y * 8, ((1 == ConfigData.mouse_key_move) ? "マウス操作" : "キー操作"), Cr);
+		DrawString(save_name_pos_x + cursor_move_unit * 8, game_menu_base_pos_y * 6, ((1 == ConfigData.mouse_key_move) ? "マウス操作" : "キー操作"), Cr);
 	}
 
 	//コンフィグ(タイトル/ゲームメニューへ戻る)
 	void CONFIG_TITLE_BACK() {
 
 		//タイトルに戻る/ゲームメニューに戻る
-		if (GAME_y == game_menu_base_pos_y * 9 && CheckHitKey(KEY_INPUT_RETURN) == 1 || GAME_y == game_menu_base_pos_y * 9 && ((GetMouseInput() & MOUSE_INPUT_LEFT) != 0)) {
+		if (GAME_y == game_menu_base_pos_y * 7 && CheckHitKey(KEY_INPUT_RETURN) == 1 || GAME_y == game_menu_base_pos_y * 7 && ((GetMouseInput() & MOUSE_INPUT_LEFT) != 0)) {
 			if (IDYES == MessageBoxYesNo("戻りますか？")) {
 
 				ClearDrawScreen();
