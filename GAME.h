@@ -156,9 +156,6 @@ void SHORTCUT_KEY();
 //各処理後のゲーム画面の描画(サウンドノベル風)
 void SOUNDNOVEL() noexcept;
 
-//各処理後のゲーム画面の描画(ウインドウ風)
-void WINDOWNOVEL() noexcept;
-
 //ショートカットキー処理後の描画
 void SHORTCUT_KEY_DRAW() noexcept;
 

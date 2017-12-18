@@ -46,14 +46,6 @@ namespace {
 		//サウンドノベル風描画時の処理
 		SOUNDNOVEL();
 	}
-
-	//既読スキップ後の処理(ウインドウ風)
-	void SKIP_READ_WINDOWNOVEL() noexcept {
-		GAMEMENU_COUNT = true;
-		//既読スキップ後の処理(ウインドウ風)
-		WINDOWNOVEL();
-	}
-
 }
 //既読スキップ判定
 void SKIP_READ_CHECK() noexcept {
@@ -66,8 +58,6 @@ void SKIP_READ_CHECK() noexcept {
 
 		//サウンドノベル風描画時の処理
 		SOUNDNOVEL();
-		//ウインドウ風描画時の処理
-		WINDOWNOVEL();
 	}
 	//ショートカットキー時の事後処理
 	SHORTCUT_KEY_DRAW();
@@ -80,8 +70,6 @@ void SKIP_START() noexcept {
 		GAMEMENU_COUNT = true;
 		//サウンドノベル風描画時の処理
 		SOUNDNOVEL();
-		//ウインドウ風描画時の処理
-		WINDOWNOVEL();
 	}
 }
 
@@ -92,8 +80,6 @@ void AUTO_START() noexcept {
 		GAMEMENU_COUNT = true;
 		//サウンドノベル風描画時の処理
 		SOUNDNOVEL();
-		//既読スキップ後の処理(ウインドウ風)
-		WINDOWNOVEL();
 	}
 }
 
@@ -104,8 +90,6 @@ void AUTO_SKIP_STOP() noexcept {
 		GAMEMENU_COUNT = true;
 		//サウンドノベル風描画時の処理
 		SOUNDNOVEL();
-		//ウインドウ風描画時の処理
-		WINDOWNOVEL();
 	}
 }
 
