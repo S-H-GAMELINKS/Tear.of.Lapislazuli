@@ -1223,11 +1223,6 @@ namespace {
 		CP++;
 	}
 
-	//キャラクター名描画処理
-	void SCRIPT_OUTPUT_CHARACTER_NAME() {
-			SP++;
-	}
-
 	//文字列の描画
 	void SCRIPT_OUTPUT_STRING_DRAW() {
 		//TODO: https://github.com/S-H-GAMELINKS/Tear.of.Lapislazuli/issues/3
@@ -1466,13 +1461,6 @@ int SCRIPT_OUTPUT() {
 
 		//立ち絵クリア処理
 		SCRIPT_OUTPUT_CHARACTER_REMOVE();
-		break;
-
-		//ウインドウ風キャラクター名描画タグ
-	case '#':
-
-		//キャラクター名描画処理
-		SCRIPT_OUTPUT_CHARACTER_NAME();
 		break;
 
 		//コメントタグ
