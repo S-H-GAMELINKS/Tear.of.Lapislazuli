@@ -1063,7 +1063,7 @@ void GameLoopTypeChoice() {
 
 	int num = (LapislazuliFav >= 3) ? 1 : 0;
 	int Lapislazuli = LoadGraph("DATA/CHARACTER/CHAR01.png", 0);
-	int bg = LoadGraph("DATA/BACKGROUND/BG01.png");
+	int bg = LoadGraph("DATA/BACKGROUND/BG02.png");
 	int windowcolor = GetColor(0, 0, 0);
 	unsigned int color = GetColor(0, 0, 255);
 
