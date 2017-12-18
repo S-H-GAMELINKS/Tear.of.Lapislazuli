@@ -753,46 +753,6 @@ namespace {
 		}
 	}
 
-	//コンフィグ(サウンドノベル風とウインドウ風)
-	void SOUNDNOVEL_WINDOWNOVEL_CHANGE() {
-
-		//サウンドノベル風とウインドウ風の切り替え
-		if (GAME_y == game_menu_base_pos_y * 6 && CheckHitKey(KEY_INPUT_RIGHT) == 1 || GAME_y == game_menu_base_pos_y * 6 && ((GetMouseInput() & MOUSE_INPUT_LEFT) != 0)) {
-
-			WaitTimer(300);
-			ConfigData.soundnovel_winownovel = 0;
-		}
-
-		if (GAME_y == game_menu_base_pos_y * 6 && CheckHitKey(KEY_INPUT_LEFT) == 1 || GAME_y == game_menu_base_pos_y * 6 && ((GetMouseInput() & MOUSE_INPUT_RIGHT) != 0)) {
-
-			WaitTimer(300);
-			ConfigData.soundnovel_winownovel = 1;
-		}
-	}
-
-	//非アクティブ時の処理設定
-	void WINDOWACTIVE() {
-
-		//非アクティブ時の処理の切り替え
-		if (GAME_y == game_menu_base_pos_y * 7 && CheckHitKey(KEY_INPUT_RIGHT) == 1 || GAME_y == game_menu_base_pos_y * 7 && ((GetMouseInput() & MOUSE_INPUT_LEFT) != 0)) {
-
-			WaitTimer(300);
-			WindowActive = false;
-
-			//非アクティブ状態ではゲームを実行しない
-			SetAlwaysRunFlag(WindowActive);
-		}
-
-		if (GAME_y == game_menu_base_pos_y * 7 && CheckHitKey(KEY_INPUT_LEFT) == 1 || GAME_y == game_menu_base_pos_y * 7 && ((GetMouseInput() & MOUSE_INPUT_RIGHT) != 0)) {
-
-			WaitTimer(300);
-			WindowActive = true;
-
-			//非アクティブ状態でもゲームを実行
-			SetAlwaysRunFlag(WindowActive);
-		}
-	}
-
 	//コンフィグ(マウス/キー操作)
 	void MOUSE_KEY_MOVE() {
 
@@ -945,12 +905,6 @@ void CONFIG() {
 
 			//文字列描画速度
 			STRING_SPEED_CHANGE();
-
-			//サウンドノベル風とウインドウ風描画設定
-			SOUNDNOVEL_WINDOWNOVEL_CHANGE();
-
-			//非アクティブ時の処理設定
-			WINDOWACTIVE();
 
 			//マウス操作とキー操作設定
 			MOUSE_KEY_MOVE();
