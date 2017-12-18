@@ -220,40 +220,6 @@ void SOUNDNOVEL() noexcept {
 	}
 }
 
-//各処理後のゲーム画面の描画(ウインドウ風)
-void WINDOWNOVEL() noexcept {
-
-	//ウインドウ風描画時の処理
-	if (ConfigData.soundnovel_winownovel == 1) {
-
-		SCREEN_CLEAR();
-
-		//背景の表示
-		background.DrawGraph(0, 0, true);
-		static const auto windowColor = GetColor(0, 0, 0);
-		DrawBox(0, 400, 640, 480, windowColor, TRUE);
-		//立ち絵の表示
-		charactor.DrawGraph(charactor_pos_x, charactor_pos_y - charactor_pos_y, true);
-		//ＢＧＭの再生
-		backgroundMusic.play(DX_PLAYTYPE_LOOP);
-
-		DrawPointY = 400;
-		DrawPointX = 0;
-
-		if (SP != 0)
-			CP = 0;
-
-		if (SP == 0) {
-			SP = 0;
-			CP = 0;
-		}
-
-		//選択肢ループの場合
-		if (SAVE_CHOICE == 1)
-			CP = 0;
-	}
-}
-
 //矢印キー操作関数
 int MoveKey(int (&KeyStateBuf)[256]) {
 
@@ -281,9 +247,6 @@ void SHORTCUT_KEY_DRAW() noexcept {
 
 		//サウンドノベル風時の処理
 		SOUNDNOVEL();
-
-		//ウインドウ風時の処理
-		WINDOWNOVEL();
 
 		SHORTCUT_KEY_FLAG = 0;
 	}
@@ -545,9 +508,6 @@ int QUICKSAVE_LOAD() {
 		//サウンドノベル風描画時の処理
 		SOUNDNOVEL();
 
-		//ウインドウ風描画時の処理
-		WINDOWNOVEL();
-
 		MessageBoxOk("ロードしました！");
 	}
 	return 0;
@@ -612,9 +572,6 @@ int CONTINUE_LOAD() {
 
 		//サウンドノベル風描画時の処理
 		SOUNDNOVEL();
-
-		//ウインドウ風描画時の処理
-		WINDOWNOVEL();
 
 		MessageBoxOk("ロードしました！");
 	}
@@ -882,9 +839,6 @@ namespace {
 
 			//サウンドノベル風描画時の処理
 			SOUNDNOVEL();
-
-			//ウインドウ風描画時の処理
-			WINDOWNOVEL();
 		}
 	}
 
@@ -1212,15 +1166,7 @@ namespace {
 			// 読みこんだグラフィックを画面左上に描画
 			charactor.DrawGraph(charactor_pos_x, charactor_pos_y, true);
 		}
-		//ウインドウ風時の処理
-		if (ConfigData.soundnovel_winownovel == 1) {
-			//背景画像を切り抜き、立ち絵の上にペースト
-			const int charactorDummy = background.DerivationGraph(charactor_pos_x, 0, character_graph_size_x, character_graph_size_y);
-			DxLib::DrawGraph(charactor_pos_x, 0, charactorDummy, true);
-			DxLib::DeleteGraph(charactorDummy);
-			// 読みこんだグラフィックを画面左上に描画
-			charactor.DrawGraph(charactor_pos_x, 0, true);
-		}
+
 		//文字を進める
 		CP++;
 	}
@@ -1230,11 +1176,7 @@ namespace {
 
 		// 読みこんだグラフィックを画面左上に描画
 		background.DrawGraph(0, 0, true);
-		//ウインドウ風時の処理
-		if (ConfigData.soundnovel_winownovel == 1) {
-			static const auto windowColor = GetColor(0, 0, 0);
-			DrawBox(0, 400, 640, 480, windowColor, TRUE);
-		}
+
 		//文字を進める
 		CP++;
 
@@ -1328,34 +1270,12 @@ namespace {
 		if (ConfigData.soundnovel_winownovel == 0) {
 			background.DrawRectGraph(charactor_pos_x, charactor_pos_y, charactor_pos_x, charactor_pos_y, character_graph_size_x, character_graph_size_y, true);
 		}
-		//ウインドウ風時の処理
-		else if (ConfigData.soundnovel_winownovel == 1) {
-			background.DrawRectGraph(charactor_pos_x, 0, charactor_pos_x, 0, character_graph_size_x, character_graph_size_y, true);
-		}
+
 		CP++;
 	}
 
 	//キャラクター名描画処理
 	void SCRIPT_OUTPUT_CHARACTER_NAME() {
-		//ウインドウ風時の処理
-		if (ConfigData.soundnovel_winownovel == 1) {
-			char CHARACTER_NAME[10] = {};
-			//キャラクター名を読み込む
-			assert(0 < CP && std::size_t(CP + 10) <= String[SP].size());
-			memcpy(CHARACTER_NAME, &String[SP][CP + 1], 9);
-			CHARACTER_NAME[9] = '\0';
-
-			//キャラクター名の背景
-			static const auto windowColor = GetColor(0, 0, 0);
-			DrawBox(30, 360, 150, 385, windowColor, TRUE);
-
-			static const auto charColor = GetColor(255, 255, 255);
-			DrawString(30, 360, CHARACTER_NAME, charColor);
-
-			SP++;
-			CP++;
-		}
-		else
 			SP++;
 	}
 
@@ -1424,46 +1344,6 @@ namespace {
 
 				background.DrawGraph(0, 0, true);
 				charactor.DrawGraph(charactor_pos_x, charactor_pos_y, true);
-			}
-		}
-	}
-
-	//ウインドウ風時の改ページ処理
-	void SCRIPT_OUTPUT_STRING_PAGE_CLEAR_WINODWNOVEL() {
-
-		//ウインドウ風時の改ページ処理
-		if (ConfigData.soundnovel_winownovel == 1) {
-
-			if (DrawPointY > 480) {
-
-				SetDrawScreen(DX_SCREEN_BACK);
-
-				incrementBackLogCount();
-
-				//バックログ取得
-				BACKLOG_GET();
-
-				// 画面を初期化して描画文字位置を初期位置に戻すおよび参照文字位置を一つ進める
-				ClearDrawScreen();
-				DrawPointY = 0;
-				DrawPointX = 0;
-				charactor.reset();
-				background.reset();
-				CP++;
-
-				SetDrawScreen(DX_SCREEN_FRONT);
-
-				WaitTimer(300);//キー判定消去待ち目的ではない(自動改ページの遅延処理)
-				ClearDrawScreen();
-				DrawPointY = 400;
-				DrawPointX = 0;
-
-				background.DrawGraph(0, 0, true);
-				if (ConfigData.soundnovel_winownovel == 1) {
-					static const auto windowColor = GetColor(0, 0, 0);
-					DrawBox(0, 400, 640, 480, windowColor, TRUE);
-				}
-				charactor.DrawGraph(charactor_pos_x, 0, true);
 			}
 		}
 	}
@@ -1673,8 +1553,6 @@ int SCRIPT_OUTPUT() {
 		//サウンドノベル風時の改ページ処理
 		SCRIPT_OUTPUT_STRING_PAGE_CLEAR_SOUNDNOVEL();
 
-		//ウインドウ風時の改ページ処理
-		SCRIPT_OUTPUT_STRING_PAGE_CLEAR_WINODWNOVEL();
 		break;
 	}
 	return 0;
