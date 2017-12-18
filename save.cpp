@@ -69,17 +69,6 @@ namespace {
 		GAMEMENU_COUNT = true;
 	}
 
-	//セーブ後の処理(ウインドウ風)
-	void SAVE_WINDOWNOVEL() {
-
-		//ウインドウ風描画時の処理
-		WINDOWNOVEL();
-
-		SAVE_CHOICE = 0;
-
-		GAMEMENU_COUNT = true;
-	}
-
 	static int CreateSaveData(int* SaveSnapHandle, const char* Message, const char* ImagePath, const char* SaveDataPath) {
 		if (IDYES == MessageBoxYesNo(Message)) {
 			//セーブデータ１用のスクリーンショット取得変数
@@ -115,8 +104,6 @@ namespace {
 			SAVE_MESSAGE();
 			//サウンドノベル風描画時の処理
 			SAVE_SOUNDNOVEL();
-			//ウインドウ風描画時の処理
-			SAVE_WINDOWNOVEL();
 		}
 
 		return 0;
@@ -262,15 +249,6 @@ namespace {
 		GAMEMENU_COUNT = true;
 	}
 
-	//ロード後の処理(ウインドウ風)
-	void LOAD_WINDOWNOVEL() {
-
-		//ウインドウ風描画時の処理
-		WINDOWNOVEL();
-
-		GAMEMENU_COUNT = true;
-	}
-
 	static int LoadSaveData(const char* Message, const char* ErrorMessage, const char* SaveDataPath) {
 		if (IDYES == MessageBoxYesNo(Message)) {
 			SaveData_t Data;
@@ -304,8 +282,6 @@ namespace {
 			LOAD_MESSAGE();
 			//ロード後の処理(サウンドノベル風)
 			LOAD_SOUNDNOVEL();
-			//ロード後の処理(ウインドウ風)
-			LOAD_WINDOWNOVEL();
 		}
 		return 0;
 	}
@@ -419,15 +395,6 @@ namespace {
 		GAMEMENU_COUNT = true;
 	}
 
-	//削除後の処理(ウインドウ風)
-	static void DELETE_WINDOWNOVEL() {
-
-		//削除後の処理(ウインドウ風)
-		WINDOWNOVEL();
-
-		GAMEMENU_COUNT = true;
-	}
-
 	static void DeleteSaveData(const char* Message, const char* ImagePath, const char* SaveDataPath) {
 		if (IDYES == MessageBoxYesNo(Message)) {
 			remove(SaveDataPath);
@@ -436,8 +403,6 @@ namespace {
 			DELETE_MESSAGE();
 			//削除後の処理(サウンドノベル風)
 			DELETE_SOUNDNOVEL();
-			//削除後の処理(ウインドウ風)
-			DELETE_WINDOWNOVEL();
 		}
 	}
 
