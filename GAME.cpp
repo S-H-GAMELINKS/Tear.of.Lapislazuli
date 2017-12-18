@@ -987,7 +987,7 @@ int Kaigyou()
 void ChoiceSelect(int num) {
 
 	//マウスの左クリック判定
-	if ((GetMouseInput() & MOUSE_INPUT_LEFT) == 1) {
+	if (CheckHitKey(KEY_INPUT_RETURN) == 1 || (GetMouseInput() & MOUSE_INPUT_LEFT) == 1) {
 
 		//バックログ取得関数
 		BACKLOG_GET();
@@ -1019,15 +1019,13 @@ void ChoiceSelect(int num) {
 }
 
 //選択肢描画関連
-void ChoiceDraw(int bg, unsigned int windowcolor, int Lapislazuli, unsigned int color) {
+void ChoiceDraw(int bg, int Lapislazuli, unsigned int color) {
 
-	//背景と選択肢部分の黒塗り
+	//背景
 	DxLib::DrawGraph(0, 0, bg, true);
-	DxLib::DrawBox(0, 0, 250, 480, windowcolor, TRUE);
 
 	// 読みこんだグラフィックを画面左上に描画し、その下を黒塗り
-	DxLib::DrawGraph(250, 0, Lapislazuli, true);
-	DxLib::DrawBox(0, 350, 640, 480, windowcolor, TRUE);
+	DxLib::DrawGraph(charactor_pos_x + 100, charactor_pos_y, Lapislazuli, true);
 
 	//瑠璃のセリフ
 	DxLib::DrawString(300, 350, "何をしましょうか……？", color);
@@ -1059,7 +1057,6 @@ void GameLoopTypeChoice() {
 	int num = (LapislazuliFav >= 3) ? 1 : 0;
 	int Lapislazuli = LoadGraph("DATA/CHARACTER/CHAR01.png", 0);
 	int bg = LoadGraph("DATA/BACKGROUND/BG02.png");
-	int windowcolor = GetColor(0, 0, 0);
 	unsigned int color = GetColor(0, 0, 255);
 
 	int TempEndFlag = EndFlag;
@@ -1084,7 +1081,7 @@ void GameLoopTypeChoice() {
 		GAME_FINISH();
 
 		//描画関連
-		ChoiceDraw(bg, windowcolor, Lapislazuli, color);
+		ChoiceDraw(bg, Lapislazuli, color);
 
 		//選択肢の表示
 		for (int i = 0; i < 3; i++)
