@@ -923,14 +923,14 @@ void CONFIG() {
 }
 
 //選択肢機能
-void sentakusi(unsigned int color, int y) {
+void sentakusi(int y) {
 
 	//カーソルの描画
-	DrawString(choise_pos_x, y, "■", color);
+	DrawString(choise_pos_x, y, "■", Cr);
 
 	//選択肢の描画
 	for (std::size_t i : {0, 1}) {
-		DrawString(choise_pos_x + cursor_move_unit, choise_pos_y[i], ChoiceStrings[i].c_str(), color);
+		DrawString(choise_pos_x + cursor_move_unit, choise_pos_y[i], ChoiceStrings[i].c_str(), Cr);
 	}
 }
 
@@ -1019,7 +1019,7 @@ void ChoiceSelect(int num) {
 }
 
 //選択肢描画関連
-void ChoiceDraw(int bg, int Lapislazuli, unsigned int color) {
+void ChoiceDraw(int bg, int Lapislazuli) {
 
 	//背景
 	DxLib::DrawGraph(0, 0, bg, true);
@@ -1028,7 +1028,7 @@ void ChoiceDraw(int bg, int Lapislazuli, unsigned int color) {
 	DxLib::DrawGraph(charactor_pos_x + 100, charactor_pos_y, Lapislazuli, true);
 
 	//瑠璃のセリフ
-	DxLib::DrawString(300, 350, "何をしましょうか……？", color);
+	DxLib::DrawString(300, 350, "何をしましょうか……？", Cr);
 }
 
 void LapislazuliFavBranchTask() {
@@ -1057,8 +1057,6 @@ void GameLoopTypeChoice() {
 	int num = (LapislazuliFav >= 3) ? 1 : 0;
 	int Lapislazuli = LoadGraph("DATA/CHARACTER/CHAR01.png", 0);
 	int bg = LoadGraph("DATA/BACKGROUND/BG02.png");
-	unsigned int color = GetColor(0, 0, 255);
-
 	int TempEndFlag = EndFlag;
 
 	SP = CP = 0;
@@ -1081,14 +1079,14 @@ void GameLoopTypeChoice() {
 		GAME_FINISH();
 
 		//描画関連
-		ChoiceDraw(bg, Lapislazuli, color);
+		ChoiceDraw(bg, Lapislazuli);
 
 		//選択肢の表示
 		for (int i = 0; i < 3; i++)
-			DrawString(50, 100 + (i * 50), Choice[num][i], color);
+			DrawString(50, 100 + (i * 50), Choice[num][i], Cr);
 
 		//選択肢カーソル
-		sentakusi(color, ChoicePosY);
+		sentakusi(ChoicePosY);
 
 		//選択後の分岐処理
 		ChoiceSelect(num);
