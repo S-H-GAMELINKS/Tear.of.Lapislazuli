@@ -1038,7 +1038,7 @@ void LapislazuliFavBranchTask() {
 		EndFlag = 8;
 
 	//BADエンドへの分岐判定
-	if (6 <= LapislazuliFav && LapislazuliFav <= 7)
+	if (7 <= LapislazuliFav && LapislazuliFav <= 7)
 		EndFlag = 9;
 
 	//GOODエンドへの分岐判定

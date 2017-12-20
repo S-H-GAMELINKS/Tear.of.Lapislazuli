@@ -24,7 +24,7 @@ void DXLib_PREP() {
 	SetWindowIconID(101);
 
 	//ウインドウに表示されるゲームソフト名
-	SetWindowText("ノベルゲームエンジン「LINKS」");
+	SetWindowText("ゲームリンクス制作「瑠璃の泪」");
 
 	//ウインドウを自由に変更できる
 	SetWindowSizeChangeEnableFlag(TRUE, TRUE);

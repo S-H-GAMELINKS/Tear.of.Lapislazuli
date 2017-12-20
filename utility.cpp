@@ -12,7 +12,7 @@ int MessageBoxYesNo(LPCTSTR lpText) noexcept
 	return MessageBox(
 		DxLib::GetMainWindowHandle(),
 		lpText,
-		"ゲームリンクス制作のノベルゲームエンジン「LINKS」",
+		"ゲームリンクス制作「瑠璃の泪」",
 		MB_YESNO
 	);
 }
@@ -21,7 +21,7 @@ int MessageBoxOk(LPCTSTR lpText) noexcept
 	return MessageBox(
 		DxLib::GetMainWindowHandle(),
 		lpText,
-		"ゲームリンクス制作のノベルゲームエンジン「LINKS」",
+		"ゲームリンクス制作「瑠璃の泪」",
 		MB_OK
 	);
 }
