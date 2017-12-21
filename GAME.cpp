@@ -983,6 +983,25 @@ int Kaigyou()
 	return 0;
 }
 
+//選択肢画面でのキー操作
+void ChoiceKeyMove() {
+
+	if (ConfigData.mouse_key_move == 0) {
+		//キー操作関連
+		if (Key[KEY_INPUT_DOWN] == 1) {
+			ChoicePosY += 50;
+			if (ChoicePosY == 250)
+				ChoicePosY = 100;
+		}
+
+		if (Key[KEY_INPUT_UP] == 1) {
+			ChoicePosY -= 50;
+			if (ChoicePosY == 50)
+				ChoicePosY = 200;
+		}
+	}
+}
+
 //選択後の分岐処理関数
 void ChoiceSelect(int num) {
 
@@ -1070,10 +1089,13 @@ void GameLoopTypeChoice() {
 	WaitTimer(300);
 
 	//ループ
-	while (ProcessMessage() == 0 && TempEndFlag == EndFlag && EndFlag != 99 && EndFlag != 99999) {
+	while (ProcessMessage() == 0 && MoveKey(Key) == 0 && TempEndFlag == EndFlag && EndFlag != 99 && EndFlag != 99999) {
 
 		//マウス操作
 		Mouse_Move();
+
+		//キー操作
+		ChoiceKeyMove();
 
 		//ゲーム終了
 		GAME_FINISH();
