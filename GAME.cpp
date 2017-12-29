@@ -1319,7 +1319,7 @@ namespace {
 				DxLib::PlayMovie(
 					fmt::format("DATA/MOVIE/MOVIE{0:c}{1:c}.wmv", String[SP][CP], String[SP][CP + 1]).c_str(),
 					1,
-					DX_MOVIEPLAYTYPE_BCANCEL
+					DX_MOVIEPLAYTYPE_NORMAL
 				);
 			}
 #if defined(_MSC_VER) && defined(_DEBUG)
