@@ -219,7 +219,7 @@ void GAME_LOOP() {
 	}
 	else if(8 <= EndFlag && EndFlag <= 10) {
 		//G-N
-		GameLoopType2(EndFlag, conv->arr[EndFlag - 1]);
+		GameLoopType1(EndFlag, conv->arr[EndFlag - 1]);
 	}
 }
 
